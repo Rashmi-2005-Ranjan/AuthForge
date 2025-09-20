@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Welcome to AuthForge!</title>
+    <style type="text/css">
+        body, table, td, a { -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
+        table, td { mso-table-lspace: 0pt; mso-table-rspace: 0pt; }
+        img { border:0; height:auto; line-height:100%; outline:none; text-decoration:none; }
+        body { margin:0; padding:0; width:100%; background-color:#f4f6ff; font-family: Arial, sans-serif; color:#333333; }
+
+        .container { max-width:600px; margin:0 auto; background:#ffffff; border-radius:12px; overflow:hidden; box-shadow:0 6px 18px rgba(0,0,0,0.06); }
+        .header { background: linear-gradient(90deg,#6a5af9,#8268f9); padding:20px; color:#ffffff; text-align:center; }
+        .header h1 { margin:0; font-size:22px; }
+
+        .body { padding:30px; text-align:center; }
+        .body h2 { margin-bottom:15px; color:#1f2d7a; }
+        .body p { font-size:15px; color:#4b5563; margin-bottom:20px; line-height:1.5; }
+
+        .btn {
+            display:inline-block;
+            text-decoration:none;
+            padding:12px 20px;
+            border-radius:10px;
+            font-weight:600;
+            background: linear-gradient(90deg,#6a5af9,#8268f9);
+            color:#fff;
+            box-shadow:0 6px 18px rgba(106,90,249,0.18);
+            margin-top:10px;
+        }
+
+        .footer { font-size:13px; color:#6b7280; padding:20px; text-align:center; }
+
+        @media only screen and (max-width: 420px) {
+            .body { padding:20px; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <!-- Header -->
+    <div class="header">
+        <h1>AuthForge</h1>
+    </div>
+
+    <!-- Body -->
+    <div class="body">
+        <h2>Welcome, <span th:text="${name}">User</span>!</h2>
+        <p>
+            We're thrilled to have you on board! AuthForge helps you manage authentication workflows seamlessly and securely.
+        </p>
+        <p>
+            Get started by logging into your account and exploring all the features we offer.
+        </p>
+        <a href="https://yourapp.com/login" class="btn">Go to Dashboard</a>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        &copy; <span th:text="${T(java.time.Year).now()}">2025</span> AuthForge. All rights reserved.
+    </div>
+</div>
+</body>
+</html>

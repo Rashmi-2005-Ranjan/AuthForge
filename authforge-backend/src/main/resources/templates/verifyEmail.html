@@ -1,0 +1,126 @@
+<!-- templates/verify-email.html -->
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Account Verification OTP</title>
+
+    <!-- Inline / embedded styles for better email client support -->
+    <style type="text/css">
+        /* Basic reset for email clients */
+        body, table, td, a { -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
+        table, td { mso-table-lspace: 0pt; mso-table-rspace: 0pt; }
+        body { margin: 0; padding: 0; width: 100% !important; height: 100% !important; background-color: #f3f6ff; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif; color: #333333; }
+
+        /* Container */
+        .email-wrapper { width: 100%; padding: 24px 12px; }
+        .email-content { max-width: 600px; margin: 0 auto; background: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 6px 18px rgba(102, 102, 255, 0.12); }
+
+        /* Header */
+        .email-header { background: linear-gradient(90deg,#6a5af9,#8268f9); padding: 22px; text-align: left; color: #ffffff; }
+        .brand h1 { margin:0; font-size:18px; letter-spacing:0.2px; font-weight:700; }
+
+        /* Body */
+        .email-body { padding: 28px; }
+        .preheader { font-size:13px; color:#6b7280; margin-bottom:12px; }
+        h2 { margin: 6px 0 12px; font-size:20px; color:#111827; }
+        p { margin: 0 0 16px; font-size:15px; line-height:1.5; color:#4b5563; }
+
+        /* OTP box */
+        .otp-box { display:flex; align-items:center; justify-content:center; gap:14px; margin: 18px 0 22px; }
+        .otp-pill {
+            background: linear-gradient(90deg,#f6f7ff,#eef0ff);
+            border: 1px solid rgba(128,104,249,0.12);
+            padding: 14px 20px;
+            font-weight: 700;
+            font-size:20px;
+            border-radius: 10px;
+            letter-spacing: 6px;
+            color: #1f2d7a;
+            box-shadow: 0 4px 12px rgba(99,102,241,0.08);
+        }
+
+        /* CTA button (for clients that render buttons) */
+        .btn {
+            display:inline-block;
+            text-decoration:none;
+            padding: 12px 20px;
+            border-radius: 10px;
+            font-weight:600;
+            background: linear-gradient(90deg,#6a5af9,#8268f9);
+            color: #fff;
+            box-shadow: 0 6px 18px rgba(106,90,249,0.18);
+        }
+
+        .muted { color:#9ca3af; font-size:13px; margin-top:14px; }
+
+        /* Footer */
+        .email-footer { padding: 18px 28px; background: #fafafa; font-size:13px; color:#6b7280; text-align:center; }
+
+        /* Responsive tweaks */
+        @media only screen and (max-width: 420px) {
+            .email-content { border-radius: 8px; }
+            .email-body { padding: 18px; }
+            .brand h1 { font-size:16px; }
+            .otp-pill { font-size:18px; padding:12px 16px; letter-spacing:4px; }
+        }
+    </style>
+</head>
+<body>
+<div class="email-wrapper">
+    <div class="email-content" role="article" aria-roledescription="email">
+
+        <!-- Header -->
+        <div class="email-header">
+            <div class="brand">
+                <h1>AuthForge</h1>
+            </div>
+        </div>
+
+        <!-- Body -->
+        <div class="email-body">
+            <div class="preheader">Your one-time passcode to verify <span th:text="${email}">user@example.com</span></div>
+
+            <h2>Verify your email</h2>
+            <p>
+                We received a request to reset the password for the account associated with
+                <strong th:text="${email}">user@example.com</strong>. Enter the code below to continue. This code will expire in <strong>1 Hour</strong>.
+            </p>
+
+            <!-- OTP display -->
+            <div class="otp-box" role="presentation" aria-hidden="false">
+                <div class="otp-pill" th:text="${otp}">123456</div>
+            </div>
+
+            <!-- CTA -->
+            <div style="text-align:center; margin-bottom:8px;">
+                <a href="#" class="btn" onclick="return false;">Use this code in the app</a>
+            </div>
+
+            <!-- Fallback -->
+            <p class="muted">
+                If the button above doesn't work, copy and paste the code (<strong th:text="${otp}">123456</strong>) into the verification field.
+            </p>
+
+            <hr style="border:none; border-top:1px solid #eef2ff; margin:20px 0;"/>
+
+            <p style="font-size:13px; color:#6b7280;">
+                If you didn't request a password reset, you can safely ignore this email — no changes were made to your account.
+            </p>
+
+            <p style="margin-top:18px; font-size:13px; color:#6b7280;">
+                Best,<br/>
+                <strong>AuthForge Team</strong>
+            </p>
+        </div>
+
+        <!-- Footer -->
+        <div class="email-footer">
+            <div>Need help? Reply to this email or contact our support team.</div>
+            <div style="margin-top:6px;">&copy; <span th:text="${T(java.time.Year).now()}">2025</span> AuthForge. All rights reserved.</div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
