@@ -20,7 +20,7 @@ Database integration is handled via **MySQL** for secure and efficient data stor
 
 ---
 
-## 🧑‍💻 What You’ll Learn
+## 🧑‍💻 My Learning
 
 ✔ Building Authentication Systems with **Spring Boot + Spring Security**  
 ✔ Implementing **JWT** and **Role-Based Access Control**  
