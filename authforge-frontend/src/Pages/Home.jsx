@@ -3,7 +3,12 @@ import Header from "../Components/Header.jsx";
 
 const Home = () => {
     return (
-        <div className="flex flex-col items-center justify-content-center min-vh-100">
+        <div
+            style={{
+                minHeight: "100vh",
+                background: "linear-gradient(90deg, #0f1629 50%, #1a1f3a 50%, #16213e 100%)",
+            }}
+        >
             <Menubar/>
             <Header/>
         </div>
